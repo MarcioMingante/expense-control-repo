@@ -58,8 +58,9 @@ function Login() {
           disabled={ isCheckInfo() }
           onClick={ () => {
             dispatch(login(userInfo.email));
-            // navigate('/carteira');
+            navigate('/carteira');
           } }
+          type="button"
         >
           Entrar
         </button>

@@ -7,6 +7,8 @@ const INITIAL_STATE = {
   idToEdit: 0,
 };
 
-export const wallet = (state = INITIAL_STATE, action: AnyAction) => {
+const wallet = (state = INITIAL_STATE, action: AnyAction) => {
   return state;
 };
+
+export default wallet;
