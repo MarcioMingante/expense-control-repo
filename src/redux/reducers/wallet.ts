@@ -1,4 +1,5 @@
 import { AnyAction } from 'redux';
+import { ATT_INFO, REQUEST_WALLET } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -8,7 +9,22 @@ const INITIAL_STATE = {
 };
 
 const wallet = (state = INITIAL_STATE, action: AnyAction) => {
-  return state;
+  switch (action.type) {
+    case REQUEST_WALLET:
+      return {
+        ...state,
+        currencies: action.payload.currencies,
+      };
+
+    case ATT_INFO:
+      return {
+        ...state,
+        expenses: [...state.expenses, action.payload.formInfo],
+      };
+
+    default:
+      return state;
+  }
 };
 
 export default wallet;

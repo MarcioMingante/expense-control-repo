@@ -13,3 +13,13 @@ export type RootReducer = {
   user: User
   wallet: Wallet
 };
+
+export type WalletFormType = {
+  id: number
+  description: string
+  tag: string
+  value: string
+  method: string
+  currency: string
+  exchangeRates: []
+};
