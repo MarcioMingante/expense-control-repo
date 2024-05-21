@@ -43,4 +43,26 @@ describe('Testando pagina de wallet', () => {
     expect(descriptionInput).toHaveValue('');
     expect(valueInput).toHaveValue('');
   });
+
+  test('Testa se o valor total é atualizado ao clicar no botão de adicionar despesas', async () => {
+    renderWithRouterAndRedux(<Wallet />);
+
+    const addButton = screen.getByRole('button');
+
+    const descriptionInput = screen.getByTestId('description-input');
+    const valueInput = screen.getByTestId('value-input');
+    await userEvent.type(descriptionInput, 'banana');
+    await userEvent.type(valueInput, '3');
+
+    await userEvent.click(addButton);
+
+    const headerText = screen.getByText('Total de despesas:');
+    expect(headerText).toBeInTheDocument();
+
+    const totalValue = screen.getByTestId('total-field');
+    expect(totalValue).toHaveTextContent('15.37');
+
+    const currency = screen.getByTestId('header-currency-field');
+    expect(currency).toHaveTextContent('BRL');
+  });
 });

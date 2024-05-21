@@ -47,5 +47,7 @@ describe('Testando pagina de login', () => {
 
     const loginButton = screen.getByRole('button', { name: /entrar/i });
     expect(loginButton).toBeEnabled();
+
+    await userEvent.click(loginButton);
   });
 });

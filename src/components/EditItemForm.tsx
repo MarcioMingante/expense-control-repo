@@ -24,8 +24,6 @@ function EditItemForm({ editItemId, setEditForm, handleClick }: EditFormType) {
     currency: currentItem[0].currency,
     exchangeRates: currentItem[0].exchangeRates,
   });
-  const [newExpensesList, setNewExpenses] = useState(expenses);
-  const dispatch = useDispatch();
 
   // const handleClick = () => {
   //   const previowsData = expenses;
