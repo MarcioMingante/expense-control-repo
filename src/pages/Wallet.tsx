@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { RootReducer, WalletFormType } from '../types/types';
 import WalletForm from '../components/WalletForm';
+import Table from '../components/Table';
 
 function Wallet() {
   const { email } = useSelector((state: RootReducer) => state.user);
@@ -43,6 +44,8 @@ function Wallet() {
       </header>
 
       <WalletForm />
+
+      <Table />
     </main>
   );
 }
