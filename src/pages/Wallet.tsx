@@ -1,13 +1,32 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { RootReducer, WalletFormType } from '../types/types';
 import WalletForm from '../components/WalletForm';
 import Table from '../components/Table';
+import EditItemForm from '../components/EditItemForm';
+import { editInfo } from '../redux/actions';
 
 function Wallet() {
   const { email } = useSelector((state: RootReducer) => state.user);
   const { expenses } = useSelector((state: RootReducer) => state.wallet);
   const [totalValue, setTotalValue] = useState('');
+  const [editItemId, setEditItemId] = useState(0);
+  const [editForm, setEditForm] = useState(false);
+  const [newExpensesList, setNewExpenses] = useState([]);
+  const dispatch = useDispatch();
+
+  const handleClick = (indexId: number, currentFormInfo: WalletFormType) => {
+    const previowsData = expenses;
+
+    previowsData.splice(indexId, 1, currentFormInfo);
+
+    setNewExpenses(previowsData);
+    setEditForm(false);
+  };
+
+  useEffect(() => {
+    dispatch(editInfo(newExpensesList));
+  }, [newExpensesList]);
 
   useEffect(() => {
     const changeTotalValue = () => {
@@ -25,7 +44,7 @@ function Wallet() {
     };
 
     setTotalValue(changeTotalValue());
-  }, [expenses]);
+  }, [expenses, newExpensesList]);
 
   return (
     <main>
@@ -43,9 +62,22 @@ function Wallet() {
         <h2 data-testid="email-field">{email}</h2>
       </header>
 
-      <WalletForm />
+      {editForm === false && (
+        <WalletForm />
+      )}
 
-      <Table />
+      {editForm === true && (
+        <EditItemForm
+          editItemId={ editItemId }
+          setEditForm={ setEditForm }
+          handleClick={ handleClick }
+        />
+      )}
+
+      <Table
+        setEditForm={ setEditForm }
+        setEditItemId={ setEditItemId }
+      />
     </main>
   );
 }

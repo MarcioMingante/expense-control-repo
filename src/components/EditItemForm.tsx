@@ -1,37 +1,48 @@
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { RootReducer } from '../types/types';
-import { addInfo } from '../redux/actions';
+import { RootReducer, WalletFormType } from '../types/types';
+import { editInfo } from '../redux/actions';
 
-const clearForm = {
-  id: 0,
-  description: '',
-  tag: 'Alimentação',
-  value: '',
-  method: 'Dinheiro',
-  currency: 'USD',
+type EditFormType = {
+  editItemId: number
+  setEditForm: Dispatch<SetStateAction<boolean>>
+  handleClick: (indexId: number, currentform: WalletFormType) => void
 };
 
-function WalletForm() {
-  const { currencies, expenses } = useSelector((state:RootReducer) => state.wallet);
-  const [lastExpense, setLastExpense] = useState(expenses.length);
-  const [currentForm, setCurrentForm] = useState({
-    id: lastExpense,
-    description: '',
-    tag: 'Alimentação',
-    value: '',
-    method: 'Dinheiro',
-    currency: 'USD',
+function EditItemForm({ editItemId, setEditForm, handleClick }: EditFormType) {
+  const { currencies, expenses } = useSelector((state: RootReducer) => state.wallet);
+
+  const currentItem = expenses
+    .filter((current: WalletFormType) => current.id === editItemId);
+
+  const [formInfo, setFormInfo] = useState<WalletFormType>({
+    id: editItemId,
+    description: currentItem[0].description,
+    tag: currentItem[0].tag,
+    value: currentItem[0].value,
+    method: currentItem[0].method,
+    currency: currentItem[0].currency,
+    exchangeRates: currentItem[0].exchangeRates,
   });
+  const [newExpensesList, setNewExpenses] = useState(expenses);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const last = expenses.length;
-    setLastExpense(last);
-  }, [expenses]);
+  // const handleClick = () => {
+  //   const previowsData = expenses;
+
+  //   previowsData.splice(editItemId, 1, formInfo);
+
+  //   setNewExpenses(previowsData);
+
+  //   setEditForm(false);
+  // };
+
+  // useEffect(() => {
+  //   dispatch(editInfo(newExpensesList));
+  // }, [newExpensesList]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setCurrentForm((prev) => (
+    setFormInfo((prev) => (
       {
         ...prev,
         [e.target.name]: e.target.value,
@@ -49,7 +60,7 @@ function WalletForm() {
           name="description"
           id="description"
           onChange={ handleChange }
-          value={ currentForm.description }
+          value={ formInfo.description }
         />
       </div>
 
@@ -60,7 +71,7 @@ function WalletForm() {
           name="tag"
           id="tag"
           onChange={ handleChange }
-          value={ currentForm.tag }
+          value={ formInfo.tag }
         >
           <option value="Alimentação">Alimentação</option>
           <option value="Lazer">Lazer</option>
@@ -78,7 +89,7 @@ function WalletForm() {
           name="value"
           id="value"
           onChange={ handleChange }
-          value={ currentForm.value }
+          value={ formInfo.value }
         />
       </div>
 
@@ -89,7 +100,7 @@ function WalletForm() {
           name="method"
           id="method"
           onChange={ handleChange }
-          value={ currentForm.method }
+          value={ formInfo.method }
         >
           <option value="Dinheiro">Dinheiro</option>
           <option value="Cartão de crédito">Cartão de crédito</option>
@@ -104,7 +115,7 @@ function WalletForm() {
           name="currency"
           id="currency"
           onChange={ handleChange }
-          value={ currentForm.currency }
+          value={ formInfo.currency }
         >
           {currencies.map((current) => (
             <option
@@ -118,19 +129,16 @@ function WalletForm() {
       </div>
 
       <button
+        data-testid="edit-btn"
         type="button"
         onClick={ () => {
-          dispatch(addInfo(currentForm));
-          setCurrentForm({
-            ...clearForm,
-            id: currentForm.id + 1,
-          });
+          handleClick(editItemId, formInfo);
         } }
       >
-        Adicionar despesa
+        Editar despesa
       </button>
     </form>
   );
 }
 
-export default WalletForm;
+export default EditItemForm;

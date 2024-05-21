@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { ATT_INFO, DELETE_INFO, REQUEST_WALLET } from '../actions';
+import { ATT_INFO, DELETE_INFO, EDIT_INFO, REQUEST_WALLET } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -26,6 +26,12 @@ const wallet = (state = INITIAL_STATE, action: AnyAction) => {
       return {
         ...state,
         expenses: action.payload.list,
+      };
+
+    case EDIT_INFO:
+      return {
+        ...state,
+        expenses: action.payload.editedList,
       };
 
     default:

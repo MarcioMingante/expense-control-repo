@@ -5,6 +5,7 @@ export const LOGIN = 'LOGIN';
 export const REQUEST_WALLET = 'REQUEST_WALLET';
 export const ATT_INFO = 'ATT_INFO';
 export const DELETE_INFO = 'DELETE_INFO';
+export const EDIT_INFO = 'EDIT_INFO';
 
 export const login = (email: string) => ({
   type: LOGIN,
@@ -41,6 +42,13 @@ export const deleteInfo = (list: WalletFormType[]) => ({
   type: DELETE_INFO,
   payload: {
     list,
+  },
+});
+
+export const editInfo = (editedList: WalletFormType[]) => ({
+  type: EDIT_INFO,
+  payload: {
+    editedList,
   },
 });
 

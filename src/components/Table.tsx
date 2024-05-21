@@ -1,10 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { RootReducer, WalletFormType } from '../types/types';
 import TableItem from './TableItem';
 import { deleteInfo } from '../redux/actions';
 
-function Table() {
+type TableType = {
+  setEditForm: Dispatch<SetStateAction<boolean>>
+  setEditItemId: Dispatch<SetStateAction<number>>
+};
+
+function Table({ setEditForm, setEditItemId }: TableType) {
   const { expenses } = useSelector((state: RootReducer) => state.wallet);
   const [filteredExpenses, setFilteredExpenses] = useState([]);
   const dispatch = useDispatch();
@@ -43,6 +48,8 @@ function Table() {
               key={ item.id }
               item={ item }
               handleDelete={ handleDelete }
+              setEditForm={ setEditForm }
+              setEditItemId={ setEditItemId }
             />
           ))
         )}
