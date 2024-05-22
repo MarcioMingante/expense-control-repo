@@ -1,7 +1,10 @@
 import { screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import Wallet from '../pages/Wallet';
-import { renderWithRedux, renderWithRouterAndRedux } from './helpers/renderWith';
+import { renderWithRouterAndRedux } from './helpers/renderWith';
+import App from '../App';
+import mockData from './helpers/mockData';
 
 const descriptionTestId = 'description-input';
 
@@ -47,27 +50,28 @@ describe('Testando pagina de wallet', () => {
   });
 
   test('Testa se o valor total é atualizado ao clicar no botão de adicionar despesas', async () => {
+    global.fetch = vi.fn(() => Promise.resolve({
+      json: () => Promise.resolve(mockData),
+    }));
+
     renderWithRouterAndRedux(<Wallet />);
 
-    // const addButton = screen.getByRole('button');
+    const addButton = screen.getByRole('button');
 
     const descriptionInput = screen.getByTestId(descriptionTestId);
     const valueInput = screen.getByTestId('value-input');
     await userEvent.type(descriptionInput, 'banana');
     await userEvent.type(valueInput, '3');
 
-    const currencySelector = screen.getByTestId('currency-input');
-    expect(currencySelector).toHaveValue('USD');
+    await userEvent.click(addButton);
 
-    // await userEvent.click(addButton);
+    const headerText = screen.getByText('Total de despesas:');
+    expect(headerText).toBeInTheDocument();
 
-    // const headerText = screen.getByText('Total de despesas:');
-    // expect(headerText).toBeInTheDocument();
+    const totalValue = screen.getByTestId('total-field');
+    expect(totalValue).toHaveTextContent('14.26');
 
-    // const totalValue = screen.getByTestId('total-field');
-    // expect(totalValue).toHaveTextContent('15.37');
-
-    // const currency = screen.getByTestId('header-currency-field');
-    // expect(currency).toHaveTextContent('BRL');
+    const currency = screen.getByTestId('header-currency-field');
+    expect(currency).toHaveTextContent('BRL');
   });
 });

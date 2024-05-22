@@ -25,20 +25,6 @@ function EditItemForm({ editItemId, setEditForm, handleClick }: EditFormType) {
     exchangeRates: currentItem[0].exchangeRates,
   });
 
-  // const handleClick = () => {
-  //   const previowsData = expenses;
-
-  //   previowsData.splice(editItemId, 1, formInfo);
-
-  //   setNewExpenses(previowsData);
-
-  //   setEditForm(false);
-  // };
-
-  // useEffect(() => {
-  //   dispatch(editInfo(newExpensesList));
-  // }, [newExpensesList]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormInfo((prev) => (
       {
