@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Login from './pages/Login';
 import Wallet from './pages/Wallet';
 import { fetchWallet } from './redux/actions';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();

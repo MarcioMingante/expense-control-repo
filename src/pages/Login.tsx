@@ -1,6 +1,8 @@
+import './login.css';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import trybeLogo from '../imgs/logo Trybe Wallet.svg';
 import { login } from '../redux/actions';
 
 const initialInfo = {
@@ -33,26 +35,29 @@ function Login() {
 
   return (
     <main>
-      <form action="submit">
-        {/* <img src="" alt="" /> */}
-        <input
-          data-testid="email-input"
-          placeholder="email"
-          onChange={ handleChange }
-          value={ userInfo.email }
-          type="email"
-          name="email"
-          id="email"
-        />
-        <input
-          data-testid="password-input"
-          placeholder="senha"
-          onChange={ handleChange }
-          value={ userInfo.password }
-          type="password"
-          name="password"
-          id="password"
-        />
+      <form className="login-form" action="submit">
+        <img src={ trybeLogo } alt="" />
+
+        <div className="login-inputs-container">
+          <input
+            data-testid="email-input"
+            placeholder="email"
+            onChange={ handleChange }
+            value={ userInfo.email }
+            type="email"
+            name="email"
+            id="email"
+          />
+          <input
+            data-testid="password-input"
+            placeholder="senha"
+            onChange={ handleChange }
+            value={ userInfo.password }
+            type="password"
+            name="password"
+            id="password"
+          />
+        </div>
 
         <button
           disabled={ isCheckInfo() }
