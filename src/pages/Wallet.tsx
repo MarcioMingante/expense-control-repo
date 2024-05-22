@@ -1,5 +1,9 @@
+import './wallet.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import trybeLogo from '../imgs/logo Trybe Wallet.svg';
+import emailImg from '../imgs/emaiIcon.svg';
+import coinsLogo from '../imgs/Moedas.svg';
 import { RootReducer, WalletFormType } from '../types/types';
 import WalletForm from '../components/WalletForm';
 import Table from '../components/Table';
@@ -48,30 +52,38 @@ function Wallet() {
 
   return (
     <main>
-      <header>
-        {/* <img src="" alt="" /> */}
+      <div className="addinfo-container">
+        <header className="header-container">
+          <div className="header-logo-container">
+            <img src={ trybeLogo } alt="logo_da_trybe" />
+          </div>
 
-        <label htmlFor="despesas">
-          <h2>
-            Total de despesas:
-          </h2>
-          <h2 id="despesas" data-testid="total-field">{totalValue}</h2>
-          <h2 data-testid="header-currency-field">BRL</h2>
-        </label>
+          <label className="header-total-value" htmlFor="despesas">
+            <img src={ coinsLogo } alt="imagem_de_moedas" />
+            <h3>
+              Total de despesas:
+            </h3>
+            <h3 id="despesas" data-testid="total-field">{totalValue}</h3>
+            <h3 data-testid="header-currency-field">BRL</h3>
+          </label>
 
-        <h2 data-testid="email-field">{email}</h2>
-      </header>
+          <div className="current-email">
+            <img src={ emailImg } alt="imagem_de_perfil" />
+            <h3 data-testid="email-field">{email}</h3>
+          </div>
+        </header>
 
-      {editForm === false && (
-        <WalletForm />
-      )}
+        {editForm === false && (
+          <WalletForm />
+        )}
 
-      {editForm === true && (
-        <EditItemForm
-          editItemId={ editItemId }
-          handleClick={ handleClick }
-        />
-      )}
+        {editForm === true && (
+          <EditItemForm
+            editItemId={ editItemId }
+            handleClick={ handleClick }
+          />
+        )}
+      </div>
 
       <Table
         setEditForm={ setEditForm }

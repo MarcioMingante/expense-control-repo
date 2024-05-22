@@ -1,0 +1,172 @@
+/* Header css */
+.addinfo-container {
+  align-items: center;
+  background-color: white;
+  border-radius: 0 0 25px 25px;
+  display: flex;
+  flex-flow: column wrap;
+  margin: 0 10%;
+  padding-bottom: 3%;
+}
+
+.header-container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  margin: 5% 0;
+  width: 100%;
+}
+
+.header-logo-container {
+  text-align: center;
+  width: 30%;
+}
+
+.header-logo-container img {
+  margin-bottom: 4%;
+  width: 75%;
+}
+
+.header-container label {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.current-email {
+  color: #2fc18c;
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.header-total-value {
+  display: flex;
+}
+
+.header-total-value h3 {
+  color: blue;
+  padding: 2px;
+}
+
+/* Walletform css */
+.wallet-form {
+  align-items: center;
+  background-color: #e1e5eb44;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 1% 0;
+  width: 100%;
+}
+
+.wallet-form label {
+  color: #003be5;
+  font-weight: 700;
+}
+
+.wallet-form button {
+  background-color: #2fc18c;
+  border: 0.5px solid rgb(214, 213, 213);
+  border-radius: 6px;
+  color: white;
+  font-size: medium;
+  font-weight: 700;
+  height: 40px;
+  margin-top: 2%;
+  width: 30%;
+}
+
+.description-tag-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 2% 0 1%;
+  width: 90%;
+}
+
+.description-input {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+}
+
+.description-input input {
+  border: 0.5px solid rgb(214, 213, 213);
+  border-radius: 6px;
+  height: 88%;
+  padding-left: 1%;
+  width: 60%;
+}
+
+.tag-input {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+.tag-input select {
+  background-color: white;
+  border: 0.5px solid rgb(214, 213, 213);
+  border-radius: 6px;
+  height: 125%;
+  padding-left: 1%;
+  width: 40%;
+}
+
+.value-method-currency-container {
+  display: flex;
+  justify-content: center;
+  margin: 1% 0 2%;
+  width: 85%;
+}
+
+.value-input {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 25%;
+}
+
+.value-input input {
+  border: 0.5px solid rgb(214, 213, 213);
+  border-radius: 6px;
+  height: 90%;
+  padding-left: 2%;
+  width: 60%;
+}
+
+.method-input {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+.method-input select {
+  background-color: white;
+  border: 0.5px solid rgb(214, 213, 213);
+  border-radius: 6px;
+  height: 120%;
+  padding-left: 1%;
+  width: 50%;
+}
+
+.currency-input {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 25%;
+}
+
+.currency-input select {
+  background-color: white;
+  border: 0.5px solid rgb(214, 213, 213);
+  border-radius: 6px;
+  height: 120%;
+  padding-left: 1%;
+  width: 50%;
+}
+
+/* Table css */
