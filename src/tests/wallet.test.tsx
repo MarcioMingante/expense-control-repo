@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 import Wallet from '../pages/Wallet';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
-import App from '../App';
 import mockData from './helpers/mockData';
 
 const descriptionTestId = 'description-input';
