@@ -69,7 +69,6 @@ function Wallet() {
       {editForm === true && (
         <EditItemForm
           editItemId={ editItemId }
-          setEditForm={ setEditForm }
           handleClick={ handleClick }
         />
       )}

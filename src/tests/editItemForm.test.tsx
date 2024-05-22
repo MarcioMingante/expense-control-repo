@@ -2,7 +2,6 @@ import { screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
-import App from '../App';
 import mockData from './helpers/mockData';
 import Wallet from '../pages/Wallet';
 

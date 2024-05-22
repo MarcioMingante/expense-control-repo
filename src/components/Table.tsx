@@ -18,8 +18,6 @@ function Table({ setEditForm, setEditItemId }: TableType) {
     const newData = expenses.filter((current: WalletFormType) => current.id !== itemId);
 
     setFilteredExpenses(newData);
-
-    console.log(filteredExpenses);
   };
 
   useEffect(() => {

@@ -1,15 +1,13 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { RootReducer, WalletFormType } from '../types/types';
-import { editInfo } from '../redux/actions';
 
 type EditFormType = {
   editItemId: number
-  setEditForm: Dispatch<SetStateAction<boolean>>
   handleClick: (indexId: number, currentform: WalletFormType) => void
 };
 
-function EditItemForm({ editItemId, setEditForm, handleClick }: EditFormType) {
+function EditItemForm({ editItemId, handleClick }: EditFormType) {
   const { currencies, expenses } = useSelector((state: RootReducer) => state.wallet);
 
   const currentItem = expenses
