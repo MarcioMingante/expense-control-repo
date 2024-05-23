@@ -110,9 +110,10 @@
   display: flex;
   justify-content: center;
   padding: 0 1%;
-  width: 11%;
   text-align: center;
+  width: 11%;
 }
+
 .table-btn {
   background: none;
   border: none;
