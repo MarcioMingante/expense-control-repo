@@ -25,21 +25,21 @@ function Table({ setEditForm, setEditItemId }: TableType) {
   }, [filteredExpenses]);
 
   return (
-    <table>
-      <thead>
+    <table className="table-container">
+      <thead className="table-header-container">
         <tr>
-          <th scope="col">Descrição</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Método de pagamento</th>
-          <th scope="col">Valor</th>
-          <th scope="col">Moeda</th>
-          <th scope="col">Câmbio utilizado</th>
-          <th scope="col">Valor convertido</th>
-          <th scope="col">Moeda de conversão</th>
+          <th className="table-spacer" scope="col">Descrição</th>
+          <th className="table-spacer" scope="col">Tag</th>
+          <th className="table-spacer" scope="col">Método de pagamento</th>
+          <th className="table-spacer" scope="col">Valor</th>
+          <th className="table-spacer" scope="col">Moeda</th>
+          <th className="table-spacer" scope="col">Câmbio utilizado</th>
+          <th className="table-spacer" scope="col">Valor convertido</th>
+          <th className="table-spacer" scope="col">Moeda de conversão</th>
           <th scope="col">Editar/Excluir</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="table-body-container">
         {expenses.length > 0 && (
           expenses.map((item: WalletFormType) => (
             <TableItem

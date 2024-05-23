@@ -7,6 +7,7 @@
   flex-flow: column wrap;
   margin: 0 10%;
   padding-bottom: 3%;
+  position: relative;
 }
 
 .header-container {
@@ -50,6 +51,73 @@
   padding: 2px;
 }
 
+/* Table css */
+.table-container {
+  align-items: center;
+  background-color: blue;
+  border-radius: 25px;
+  display: flex;
+  flex-flow: column wrap;
+  margin: -14.23rem 5%;
+  padding: 18% 0 3%;
+}
+
+.table-header-container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+}
+
+.table-header-container tr {
+  border-bottom: 1px solid white;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 1%;
+  width: 100%;
+}
+
+.table-spacer {
+  border-right: 1px solid white;
+}
+
+.table-header-container th {
+  align-items: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 0 1%;
+  width: 11%;
+}
+
+.table-body-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  width: 90%;
+}
+
+.table-body-container tr {
+  border-top: 2px solid #2fc18c;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1% 0;
+  width: 100%;
+}
+
+.table-body-container td {
+  align-items: center;
+  color: #1dec0b;
+  display: flex;
+  justify-content: center;
+  padding: 0 1%;
+  width: 11%;
+  text-align: center;
+}
+.table-btn {
+  background: none;
+  border: none;
+}
+
 /* Walletform css */
 .wallet-form {
   align-items: center;
@@ -57,7 +125,9 @@
   display: flex;
   flex-flow: column wrap;
   padding: 1% 0;
+  position: relative;
   width: 100%;
+  z-index: 9;
 }
 
 .wallet-form label {
@@ -168,5 +238,3 @@
   padding-left: 1%;
   width: 50%;
 }
-
-/* Table css */

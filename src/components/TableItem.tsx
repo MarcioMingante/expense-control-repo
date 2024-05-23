@@ -1,4 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
+import editLogo from '../imgs/editLogo.svg';
+import trashLogo from '../imgs/trashLogo.svg';
 import { WalletFormType } from '../types/types';
 
 type TableItemType = {
@@ -33,18 +35,20 @@ function TableItem({ item, handleDelete, setEditForm, setEditItemId }: TableItem
       <td>Real</td>
       <td>
         <button
+          className="table-btn"
           data-testid="edit-btn"
           onClick={ handleClick }
         >
-          Edit
+          <img src={ editLogo } alt="" />
         </button>
         <button
+          className="table-btn"
           data-testid="delete-btn"
           onClick={ () => {
             handleDelete(id);
           } }
         >
-          Delete
+          <img src={ trashLogo } alt="" />
         </button>
       </td>
     </tr>
